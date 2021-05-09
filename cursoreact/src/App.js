@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 
 function App() {
   const[contagem,setContagem] = useState(0);
-  useEffect(()=>{document.title = ""},[contagem]);
+  useEffect(()=>{document.title = "Contagem"+contagem},[contagem]);
 
   function aumentarAction(){
     setContagem(contagem+ 1);

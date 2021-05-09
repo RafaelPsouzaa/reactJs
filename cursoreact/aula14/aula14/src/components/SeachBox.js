@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import styled from 'Styled-components';
+import styled from 'styled-components';
 
 const InputText = styled.input`
     border:2px solid #000;
@@ -10,7 +10,7 @@ const InputText = styled.input`
     `;
 
    function SeachBox(){
-       
+
        return(
            <InputText/>
        );

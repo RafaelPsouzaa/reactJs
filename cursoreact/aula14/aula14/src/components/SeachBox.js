@@ -9,10 +9,11 @@ const InputText = styled.input`
     width:300px;
     `;
 
-   function SeachBox(){
+   function SeachBox(props){
 
        return(
-           <InputText/>
+           <InputText type = "text" placeholder ={props.frasePadrao}/>
+           
        );
 
    } 

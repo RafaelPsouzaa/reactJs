@@ -8,7 +8,8 @@ function App(){
     return(
         <div>
             <h1>Listas de Tarefas</h1>
-            <SeachBox/>
+            <SeachBox frasePadrao = "faca sua busca.."/><br/>
+            <SeachBox frasePadrao = "Digite seu Nome."/><br/>
         </div>
     );
 }

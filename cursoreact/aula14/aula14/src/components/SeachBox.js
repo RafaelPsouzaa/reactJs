@@ -11,8 +11,14 @@ const InputText = styled.input`
 
    function SeachBox(props){
 
+    const [texto,setTexto] = useState('');
+    
+
        return(
-           <InputText type = "text" placeholder ={props.frasePadrao}/>
+           <InputText type = "text"
+           value = {texto}
+           onChange ={(e)=>setTexto(e.target.value)}
+           placeholder ={props.frasePadrao??"Digite alguma coisa"}/>
            
        );
 

@@ -6,6 +6,7 @@ const Challenge = () => {
 
     return(
         <div>
+            
             <div>
                 <button onClick={soma}>click soma</button>
             </div>

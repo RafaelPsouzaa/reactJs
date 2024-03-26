@@ -6,8 +6,14 @@ const Events = () => {
     
     return(
         <div>
-            <button onClick={handleMyEvent}>  click aqui </button>
+            <div><button onClick={handleMyEvent}>  click aqui </button></div>
+            <div>
+                <button onClick={() => console.log("clicou!")}>
+                    clique aqui tambem
+                    </button>
+            </div>
         </div>
+        
     )
 }
 

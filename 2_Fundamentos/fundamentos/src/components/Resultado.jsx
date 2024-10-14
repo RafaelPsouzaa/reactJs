@@ -4,7 +4,7 @@ const Resultado = (props) => {
   return (
     <div>
         <p>Valor do Resultado: {props.somaNotas}</p>
-        <p>{props.somaNotas >= 60 ? "Aprovados" : "Reprovados"}</p>
+        <p>{props.somaNotas >= 6 ? "Aprovados" : "Reprovados"}</p>
 
     </div>
   )

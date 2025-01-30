@@ -1,5 +1,7 @@
 import {useState}  from 'react'
-
+import './App.css'
+import ToDo from './components/ToDo';
+import TodoForm from './components/TodoForm';
 function App() {
   const [toDos,setToDos] = useState([{
     id:1,
@@ -20,25 +22,35 @@ function App() {
     isCompleted: false,
   }]);
 
+    const addTodo =(text,category) =>{
+      const newTodos = [
+        ...toDos,
+        {
+        id:Math.floor(Math.random()*10000),
+        text,
+        category,
+        isCompleted:false, 
+      }]
+      setToDos(newTodos);
+    };
+
+    const removeTodo = (id )=> {
+      const newTodos = [...toDos]
+      const filteredTodos = newTodos.filter((todo)=> todo.id !== id ? todo : null);
+      setToDos(filteredTodos);
+        }
+
   return (
     <div className='app'>
       <h1>Listas de Tarefas</h1>
       <div className="todo-list">
-        {toDos.map((toDo)=>(
-          <div className="toDo">
-            <div className="content">
-              <p>{toDo.text}</p>
-              <p className="category">({toDo.category})</p>
-            </div>
-            <div>
-              <button>completar</button>
-              <button>x</button>
-            </div>
-          </div>
+        {toDos.map((elemTodos)=>(
+          <ToDo key={elemTodos.id} propstodo={elemTodos} removeTodo={removeTodo}/> //componente ToDo esta recebendo a propriedade propstodo dos elementos do array toDOS
         ))}
       </div>
+      <TodoForm addTodo={addTodo}/>
     </div>
   )
 }
-
+// https://www.youtube.com/watch?v=YVEVrigByKY&t=1s 
 export default App

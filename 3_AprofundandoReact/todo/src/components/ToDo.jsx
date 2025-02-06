@@ -9,7 +9,7 @@ const ToDo = ({propstodo,removeTodo}) => {
             </div>
             <div>
               <button className='complete'>completar</button>
-              <button className='remove' onClick={()=> removeTodo(ToDo.id)}>x</button>
+              <button className='remove' onClick={()=> removeTodo(propstodo.id)}>x</button>
             </div>
           </div>
   )

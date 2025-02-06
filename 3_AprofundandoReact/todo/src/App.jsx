@@ -36,7 +36,7 @@ function App() {
 
     const removeTodo = (id )=> {
       const newTodos = [...toDos]
-      const filteredTodos = newTodos.filter((todo)=> todo.id !== id ? todo : null);
+      const filteredTodos = newTodos.filter((ToDo)=> ToDo.id !== id ? ToDo : null);
       setToDos(filteredTodos);
         }
 

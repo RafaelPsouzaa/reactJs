@@ -2,6 +2,7 @@ import {useState}  from 'react'
 import './App.css'
 import ToDo from './components/ToDo';
 import TodoForm from './components/TodoForm';
+import Seach from './components/Seach';
 function App() {
   const [toDos,setToDos] = useState([{
     id:1,
@@ -22,6 +23,8 @@ function App() {
     isCompleted: false,
   }]);
 
+    const [search,setSearch] = useState("");
+
     const addTodo =(text,category) =>{
       const newTodos = [
         ...toDos,
@@ -39,13 +42,19 @@ function App() {
       const filteredTodos = newTodos.filter((ToDo)=> ToDo.id !== id ? ToDo : null);
       setToDos(filteredTodos);
         }
+        const completeTodo = (id) => {
+          const newTodos = [...toDos]
+          newTodos.map((ToDo) => ToDo.id === id ? ToDo.isCompleted = !ToDo.isCompleted:ToDo);
+          setToDos(newTodos);
+        }
 
   return (
     <div className='app'>
       <h1>Listas de Tarefas</h1>
+      <Seach search={search} setSearch={setSearch}/>
       <div className="todo-list">
-        {toDos.map((elemTodos)=>(
-          <ToDo key={elemTodos.id} propstodo={elemTodos} removeTodo={removeTodo}/> //componente ToDo esta recebendo a propriedade propstodo dos elementos do array toDOS
+        {toDos.filter((elemTodos)=>elemTodos.text.toLowerCase().includes(search.toLowerCase())).map((elemTodos)=>(//estudar essa parte
+          <ToDo key={elemTodos.id} propstodo={elemTodos} removeTodo={removeTodo} completeTodo={completeTodo}   /> //componente ToDo esta recebendo a propriedade propstodo dos elementos do array toDOS
         ))}
       </div>
       <TodoForm addTodo={addTodo}/>

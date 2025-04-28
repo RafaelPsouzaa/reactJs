@@ -50,7 +50,7 @@ function App() {
         <UserDetails key={User.id} name={User.name} job={User.job} age={User.age}/>
       ))}
 
-
+  
     </div>
   );
 }

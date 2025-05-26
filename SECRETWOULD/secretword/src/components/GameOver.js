@@ -1,11 +1,12 @@
 import '../components/GameOver.css'
 
-const GameOver = ({retry}) => {
+const GameOver = ({retry,score}) => {
   return (
     <div>
-        <h1>RESTART</h1>
+          <h1>Fim de Jogo</h1>
+          <h2> Sua pontuaçao foi: <span>{score}</span></h2>
         <button onClick={retry}>Finalizar Jogo </button>
-      </div>
+    </div>
   )
 }
 

@@ -43,6 +43,7 @@ function App() {
 
   //start of game 
   const startGame = useCallback(()=>{
+      setGameStage(stages[1].name)
     //reset all stages
       clearLetterStates()
      
@@ -72,7 +73,7 @@ function App() {
     //push guessed letter or remove a guess
     if(letters.includes(normalizedLetter)){
         setGuessedLetters((actualGuessedLetters)=>[
-          ...actualGuessedLetters,normalizedLetter
+          ...actualGuessedLetters,letter
         ])
     }else{
       setWrongLetters((actualWrongLetters)=>[
@@ -80,17 +81,23 @@ function App() {
           ])
 
           setGuesses((actualGuesses)=> actualGuesses -1)
-    }
-
- }
-
-  const clearLetterStates = () => {
-    setGuessedLetters([]);
-    setWrongLetters([])
-  }
- 
-//check if guesses ended 
-  useEffect(()=>{
+        }
+        
+      };
+      
+        //restart the Game 
+      const retry = () => {
+        setScore(0);
+        setGuesses(guessesQty );
+        setGameStage(stages[0].name)
+      }
+      const clearLetterStates = () => {
+        setGuessedLetters([]);
+        setWrongLetters([])
+      }
+      
+      //check if guesses ended 
+      useEffect(()=>{
     if(guesses<=0){
       //reset all stages
       clearLetterStates()
@@ -116,12 +123,6 @@ function App() {
 
 
 
-  //restart the Game 
-  const retry = () => {
-    setScore(0);
-    setGuesses(guessesQty );
-    setGameStage(stages[0].name)
-  }
 
   return (
     <div className="App">
@@ -130,8 +131,11 @@ function App() {
     <Game verifyLetter={verifyLetter}
      pickedWord={pickedWord}
       pickedCategory={pickedCategory} 
-      letters={letters} guessedLetters={guessedLetters} 
-      wrongLetters={wrongLetters}guesses={guesses} score={score}/>}
+      letters={letters} 
+      guessedLetters={guessedLetters} 
+      wrongLetters={wrongLetters}
+      guesses={guesses}
+       score={score}/>}
     {gameStage === 'end'&& <GameOver retry={retry} score={score}/>}
     </div>
   );
